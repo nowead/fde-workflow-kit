@@ -12,7 +12,7 @@ Make the task executable in about 15 minutes, then start building. Nothing specu
 Use this mode if `docs/progress.md` exists or the human says 복구/resume:
 
 1. Read only its "현재 상태" section, `git log --oneline -15`, and `git status`.
-2. Reply in 3 lines: where we are, the next step, and the time left.
+2. Reply in 3 lines: where we are, next step, time left.
 3. Continue. Do not re-read the whole task.
 
 ## Steps
@@ -28,7 +28,7 @@ Use this mode if `docs/progress.md` exists or the human says 복구/resume:
    - It sets the slice order, smoke check, preview check, and final story.
 4. **Requirements.** Write `docs/requirements.md` from `templates.md` here:
    - The purpose (problem, success, golden path, deliverables) and the README's requirements, each CONFIRMED (source), ASSUMED, or OPEN.
-   - 확인할 것: what the README leaves to the stakeholder and gaps that would change the build (rule boundaries and exceptions, states in the provided data). At most 7 one-line items, each one question with why and a default, most important first.
+   - 확인할 것: what the README leaves to the stakeholder and gaps that would change the build (rule boundaries and exceptions, who may perform each action even without login, states in the provided data). Up to 7 items (one-line question, why, default), most important first.
    - Create `docs/stakeholder.md` from its template; it is the human's, so never edit it afterwards.
    - Layout: compact (3 or fewer Musts, no decision records required) keeps decisions in the 결정 section of requirements.md; full adds `docs/adr/`.
 5. **Stack.** Prefer what the environment has; add dependencies only for a Must. Record it as decision 1 (`docs/adr/0001-<stack>.md` when full); a fixed stack needs only a log line. Web servers bind `0.0.0.0` on a fixed port.

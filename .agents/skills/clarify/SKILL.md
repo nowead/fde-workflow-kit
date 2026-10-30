@@ -5,7 +5,7 @@ description: Use when the human has written or pasted a conversation with the st
 
 # Clarify
 
-The human talks to the stakeholder in their own words and keeps the conversation in `docs/stakeholder.md`. Turn it into requirements the human can check at a glance, then stop so they can review them.
+The human talks to the stakeholder in their own words and keeps the conversation in `docs/stakeholder.md`. Turn it into requirements the human can check at a glance, then stop for their review.
 
 ## Files
 
@@ -15,16 +15,16 @@ The human talks to the stakeholder in their own words and keeps the conversation
 
 ## Steps
 
-1. **Read only the new lines:** from the line after the range in the last `[STAKEHOLDER]` log line, or from line 1 if there is none. Read the whole file if it is now shorter than that range. If the conversation came in the chat instead, cite it as `채팅 HH:MM`.
+1. **Read only the new lines:** from the line after the range in the last `[STAKEHOLDER]` log line (or line 1) to the end of the file, e.g. `nl -ba docs/stakeholder.md | sed -n '29,$p'`. Read the whole file if it is now shorter than that range. If the conversation came in the chat instead, cite it as `채팅 HH:MM`.
 2. **Cite by line.**
    - A stakeholder statement: `담당자 12행 "<핵심 구절>"`, quoting only the few words that carry the rule.
    - A line the human marks as a summary, or any line not in the stakeholder's own words, is the human's account: `12행 요약`, without quotation marks.
    - Both are valid sources for CONFIRMED.
 3. **Update requirements.md.**
    - New or refined rules become requirement rows: CONFIRMED (source), with an acceptance check the check command can run. Update the golden path if it changes.
-   - Remove answered 확인할 것 items; the answer now lives in a requirement row.
-   - A conflict with the README or an earlier answer goes in the 충돌 section as `C1: README … "X" / 담당자 12행 "Y" → 제안: …`. Mark the affected rows with the conflict ID and apply neither side until the human chooses.
-   - Add 확인할 것 items for what the answers leave open that would change the build: the boundaries and exceptions of each rule (for example, whether an end time equal to the next start counts as overlap), the states a rule creates, and how a rule treats the provided data.
+   - Remove answered 확인할 것 items.
+   - A conflict with the README or an earlier answer goes in the 충돌 section as `C1: README … "X" / 담당자 12행 "Y" → 제안: …`. Propose the stakeholder's latest answer unless it breaks an organizer rule or a required deliverable. Mark the affected rows with the conflict ID and apply neither side until the human chooses.
+   - Add 확인할 것 items for what the answers leave open that would change the build: the boundaries and exceptions of each rule (for example, whether an end time equal to the next start overlaps), who may perform each action, the states a rule creates, and how a rule treats the provided data.
    - Each item is one line with a single question: `Q7 <질문> | 왜: <바뀌는 것> | 기본값: <답이 없을 때>`. Keep existing IDs and number new items after the highest.
    - Keep at most 7 open items, most important first. Settle the rest yourself: write the default into the requirement row as ASSUMED.
 4. **Log** one `[STAKEHOLDER]` line in progress.md with the line range and what changed. Update its current state, then commit the docs.
@@ -51,7 +51,7 @@ Add a 확인할 것 item the human can show the stakeholder: `Q9 동작 확인: 
 
 ## Boundaries
 
-- Questions for the stakeholder exist only as 확인할 것 items; the human asks them in their own words.
+- Questions for the stakeholder exist only as 확인할 것 items, never about organizer rules; the human asks them in their own words.
 - Never invent answers, and never present a summary as a quote.
 - Mark a requirement CONFIRMED only with a line in stakeholder.md, the chat, or the README as its source.
 - The hard rules in AGENTS.md apply.

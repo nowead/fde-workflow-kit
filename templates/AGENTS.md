@@ -2,7 +2,7 @@
 
 Working agreement for this workspace.
 
-**Priority:** task README, provided files, and organizer rules > this file > skills.
+**Priority:** task README, provided files, and organizer rules > this file > skills. This ranks instructions, not business answers: a stakeholder answer that differs from the README is a conflict the human resolves.
 
 **Language:** write every reply and document in the task's language (Korean unless the task uses another).
 

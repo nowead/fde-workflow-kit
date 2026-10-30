@@ -17,52 +17,49 @@ Use this mode if `docs/progress.md` exists or the human says 복구/resume:
 
 ## Steps
 
-1. **Clock.** Read the clock in the human's time zone (default `TZ=KST-9 date +%H:%M`, which works without tzdata; sandbox clocks are often UTC).
+1. **Clock.** Read the clock in the human's time zone (default `TZ=KST-9 date +%H:%M`; sandbox clocks are often UTC).
    - Deadline D = now + the remaining time the human gave. If they gave none, ask once.
-   - Wrap-up deadline W = D minus a fifth of the remaining time, with that amount rounded up to the next 10 minutes (D-40 for a 3-hour task). Submit by D-10.
-   - Target finish = your estimate of Musts plus wrap-up, if that comes before D-10.
+   - Wrap-up point W = D minus a fifth of the remaining time, rounded up to 10 minutes (D-40 for 3 hours). `$checkpoint` decides on open Musts there.
+   - Wrap-up limit L = D-25 (or W, if later): 15 minutes of short wrap-up plus 10 to submit; no feature work crosses it. Submit by D-10.
+   - Target finish = estimated Musts plus wrap-up, if before D-10.
 2. **Read** the task README and every provided file. Check sizes first and use `head` on large data. Never edit these files.
 3. **Frame the problem** before listing features: whose problem it is, what hurts today, and what success looks like.
-   - Then pick the golden path: the 2-3 minute end-to-end user flow that must work.
-   - The golden path sets the slice order, the smoke check, the preview check, and the final story.
-4. **Requirements.** Create `docs/requirements.md` from `templates.md` in this folder. It covers:
-   - the problem, success criteria, and golden path
-   - deliverables with exact paths, citing the README section
-   - Must/Should/Could requirements, each with status CONFIRMED (source), ASSUMED, or OPEN
-   - open questions and out-of-scope items
-5. **Stack.** Prefer what the environment already has. Add dependencies only when a Must needs them. Record the choice in `docs/adr/0001-<stack>.md`. Web servers bind `0.0.0.0` on a fixed port.
-6. **Check command.** Create one command that runs the tests plus a golden-path smoke check and exits non-zero on failure (for example `scripts/check.sh` or `npm run check`). Run it once now.
+   - Then pick the golden path: the 2-3 minute end-to-end flow that must work.
+   - It sets the slice order, smoke check, preview check, and final story.
+4. **Requirements.** Write `docs/requirements.md` from `templates.md` here:
+   - The purpose (problem, success, golden path, deliverables) and the README's requirements, each CONFIRMED (source), ASSUMED, or OPEN.
+   - 확인할 것: what the README leaves to the stakeholder and gaps that would change the build (rule boundaries and exceptions, states in the provided data). At most 7 one-line items, each one question with why and a default, most important first.
+   - Create `docs/stakeholder.md` from its template; it is the human's, so never edit it afterwards.
+   - Layout: compact (3 or fewer Musts, no decision records required) keeps decisions in the 결정 section of requirements.md; full adds `docs/adr/`.
+5. **Stack.** Prefer what the environment has; add dependencies only for a Must. Record it as decision 1 (`docs/adr/0001-<stack>.md` when full); a fixed stack needs only a log line. Web servers bind `0.0.0.0` on a fixed port.
+6. **Check command.** One command that runs the tests plus a golden-path smoke check and exits non-zero on failure (for example `scripts/check.sh`). Run it once now.
 7. **Git.** If `git status` fails, run `git init` and commit the provided files as the baseline. Commit locally only.
-8. **Progress.** Create `docs/progress.md` from the template with:
-   - the current state, D, target finish, and W
+8. **Progress.** Complete `docs/progress.md` from the template with:
+   - the layout, the current state, D, target finish, W, and L
    - the slice table: 10-25 minutes per slice, golden path first, Musts before Shoulds. Slice 1 must not depend on open questions.
    - the first log line
-9. **AGENTS.md.** Fill "Verified commands" with commands you actually ran. If the task names other doc files, add one line saying which task file each doc feeds.
-10. **Questions.** Draft at most 5 stakeholder questions, highest impact first.
-    - Each question names the decision point, gives 2-3 options, and states the default you will use if it goes unanswered.
-    - Never ask what the README answers, or what the team decides itself (stack, structure).
-    - Write a paste-ready block in the stakeholder's language and a polite business tone.
-11. **Commit** with `chore: kickoff` (docs, check command, AGENTS.md), then send the report.
+9. **AGENTS.md.** Fill "Verified commands" with commands you actually ran. If the task names other doc files, note which task file each doc feeds.
+10. **Commit** with `chore: kickoff` (docs, check command, AGENTS.md), then send the report.
 
 ## Report
 
-Keep it to 10 lines or fewer plus the question block:
+Keep it to 10 lines or fewer:
 
 ```text
-남은 시간 2:50 | 마감 13:00 | 목표 종료 12:30 | 늦어도 마무리 12:20
+남은 시간 2:50 | 마감 13:00 | 목표 종료 12:30 | 마무리 판단 12:20 | 한계 12:35
 문제·성공: …
 골든 패스: … → … → …
-산출물: <exact paths> (README §…)
+산출물: <exact paths> (README §…), 기록: 압축/전체
 check: <command> → <result>
-업무 담당자 질문 (그대로 복사해 보내세요):
-<block>
+담당자에게 확인할 것: requirements.md Q1-Qn (먼저: Q1 …, Q2 …)
+대화는 docs/stakeholder.md에 붙여 넣고 $clarify
 지금 직접 확인할 것: <README 구간 등>
 다음: 슬라이스 1 - … (지금 시작)
 ```
 
 ## After the report
 
-Start slice 1 in the same turn unless the human asked you to wait. Until the stakeholder answers, build nothing an open question could change. Add no persistence layers, fuzz tests, or extra tooling unless a Must requires them.
+Start slice 1 in the same turn unless the human asked you to wait. Build nothing an open 확인할 것 item could change. Add no persistence layers, fuzz tests, or extra tooling unless a Must requires them.
 
 ## Boundaries
 

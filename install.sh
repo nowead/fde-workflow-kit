@@ -11,7 +11,8 @@ Usage: bash install.sh [WORKSPACE] [--legacy | --repo] [--force]
   --legacy   copy skills to ${CODEX_HOME:-~/.codex}/skills  (older Codex versions)
   --repo     copy skills to WORKSPACE/.agents/skills        (repo scope; ends up in WORKSPACE)
   WORKSPACE  also create WORKSPACE/AGENTS.md from templates/AGENTS.md if it does not exist
-  --force    replace skill folders that already exist with the same name
+  --force    delete and replace skill folders that already exist with the same name
+             (avoid in exam or shared environments)
 EOF
 }
 

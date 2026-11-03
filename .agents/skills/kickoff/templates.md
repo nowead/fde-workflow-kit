@@ -23,7 +23,7 @@ Both layouts keep the same content: requirements with status, source, and verifi
 | ID | 요구사항 | 우선순위 | 상태 (출처) | 수용 기준 | 검증 |
 | --- | --- | --- | --- | --- | --- |
 | R1 | … | Must | CONFIRMED (README §2) | … | 미검증 |
-| R6 | … | Must | CONFIRMED (담당자 12행 "<핵심 구절>") | … | PASS (`check`) |
+| R6 | … | Must | CONFIRMED (담당자 12행 "<핵심 구절>") | … | PASS (`test_R6_…`) |
 | R7 | … | Should | ASSUMED (Q3 기본값) | … | 미검증 |
 
 ## 충돌 (사람이 고를 때까지 어느 쪽도 적용하지 않음)
@@ -37,7 +37,7 @@ Both layouts keep the same content: requirements with status, source, and verifi
 - …
 
 ## 결정 (압축 형식에서만. 전체 형식은 docs/adr/)
-- D1 HH:MM <결정>: <고른 것>. 이유: … / 버린 대안: … / 출처: README §… 또는 담당자 12행 또는 사람의 결정
+- D1 HH:MM <결정>: <고른 것>. 이유: … / 버린 대안: … / 출처: README §… 또는 담당자 12행 또는 사람: "<사람이 한 말 그대로>"
 ```
 
 ## docs/stakeholder.md
@@ -57,7 +57,7 @@ Kickoff creates only this header. After that the file belongs to the human.
 # ADR-0001: <결정 제목>
 
 - 상태: 채택 (HH:MM) | 대체됨 → ADR-000N
-- 출처: README §… / 담당자 12행 "…" / 사람의 결정
+- 출처: README §… / 담당자 12행 "…" / 사람: "…"
 
 ## 맥락
 <왜 결정이 필요했나. 2~3줄>
@@ -98,6 +98,28 @@ Kickoff creates only this header. After that the file belongs to the human.
 - HH:MM [ADR-0002] 저장 방식: JSON 파일
 - HH:MM [AI] 첫 구현이 장비 겹침만 검사함을 테스트로 발견 → 엔지니어 겹침 추가
 - HH:MM [VERIFY] `scripts/check.sh` → 12/12 PASS
-- HH:MM [SCOPE] R5 진행: 예상 8분 ×1.5 ≤ 한계까지 15분, 되돌릴 커밋 a1b2c3
+- HH:MM [VERIFY] 사람 미리보기: "겹치는 예약을 넣으면 빨간 오류가 뜸"
+- HH:MM [SCOPE] R5 진행 (사람: "데모의 핵심 흐름이라 빼면 안 됨"): 예상 8분 ×1.5 ≤ 한계까지 15분, 되돌릴 커밋 a1b2c3
 - HH:MM [SCOPE] 기능 동결
+```
+
+## 과제가 요구하는 문서 (예: `PLAN.md`)
+
+Kickoff creates it as a short view; checkpoints change it when the plan changes; wrap-up finishes it. Use the section names the task gives, and link instead of copying.
+
+```markdown
+# PLAN
+
+## 문제 정의
+<한두 줄>. 목적과 요구사항: [docs/requirements.md](docs/requirements.md)
+
+## 구현 계획
+- 골든 패스: … → … → …
+- 슬라이스와 예상 시간: [docs/progress.md](docs/progress.md)
+
+## 주요 판단과 근거
+- <결정 한 줄> (D1 또는 ADR-0001)
+
+## 검증 결과
+마무리 때 채운다. 지금까지의 기록: [docs/progress.md](docs/progress.md)
 ```

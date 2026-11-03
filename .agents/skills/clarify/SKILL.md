@@ -32,7 +32,7 @@ The human talks to the stakeholder in their own words and keeps the conversation
 
 ## When the human answers
 
-- **A conflict choice:** record it as a decision (an ADR in the full layout, the 결정 section in the compact one) with who chose, why, and both quotes. Apply it to the rows and remove the conflict line.
+- **A conflict choice:** record it as a decision (an ADR in the full layout, the 결정 section in the compact one) with both quotes and the human's choice and reason in their own words, as `사람: "…"`. If they gave no reason, write 이유 미기재; never supply one. Apply it to the rows and remove the conflict line.
 - **"진행" or any go-ahead:** update the slice table and continue with the next slice that no open conflict blocks. Where a slice depends on an open 확인할 것 item, build its 기본값 and mark that requirement `ASSUMED (Q7 기본값)`.
 
 ## After a golden-path slice works
@@ -45,9 +45,10 @@ Add a 확인할 것 item the human can show the stakeholder: `Q9 동작 확인: 
 
 1. 반영: stakeholder.md N-M행
 2. 확정·변경: R… (one line each)
-3. 충돌: C… 선택지와 제안
-4. 새로 확인할 것: the top 3 Q items
-5. `requirements.md를 확인하고 충돌을 골라 주세요. "진행"이라고 하면 이어서 구현합니다.`
+3. 자동 가정: the rows you settled with a default this time, as `R… ← Q… 기본값`, or 없음
+4. 충돌: C… 선택지와 제안, then `고른 쪽과 이유를 한 줄로 주세요 (예: "C1 담당자 쪽, 현장 운영이 그래서")`
+5. 새로 확인할 것: the top 3 Q items
+6. `requirements.md를 확인하고 "진행"이라고 하면 이어서 구현합니다.`
 
 ## Boundaries
 

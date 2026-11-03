@@ -1,11 +1,11 @@
 ---
 name: wrapup
-description: Use when every Must is PASS or accepted as a limitation, when the wrap-up point arrives (about 20% of the total time before the deadline; D-40 for a 3-hour task) and no open Must is worth finishing, when the wrap-up limit arrives (D-25), or when the human wants to finish and submit a timed task; covers the feature freeze, final audit, final documents, debrief, and submission checklist in one pass.
+description: Use when every Must is PASS or accepted as a limitation, when the wrap-up point arrives (about 20% of the total time before the deadline; D-40 for a 3-hour task) and no open Must is worth finishing, when the wrap-up limit arrives (D-25), or when the human wants to finish and submit a timed task.
 ---
 
 # Wrap-up
 
-One pass from "building" to "ready to submit". Budget about 30 minutes; started at the wrap-up limit L, it has 15: audit 5, documents 5, debrief and checklist 5. Shrink each step when time is short, but never skip the audit or the debrief.
+One pass from "building" to "ready to submit". Budget about 30 minutes; started at the wrap-up limit L, it has 15: audit 5, debrief 5, documents and checklist 5. Shrink each step when time is short, but never skip the audit or the debrief.
 
 ## Steps
 
@@ -14,7 +14,9 @@ One pass from "building" to "ready to submit". Budget about 30 minutes; started 
    - Read the clock (default `TZ=KST-9 date +%H:%M`) and log `[SCOPE] freeze` in `docs/progress.md`.
    - No new features from here on. Missing features become limitations, each with its smallest version as the first next step.
 2. **Final audit.** Follow the `audit` skill in final mode: at most 10 minutes, and P0 fixes to existing behavior only.
-3. **Final documents** (at most 10 minutes):
+3. **Debrief.** Follow the `debrief` skill and send the briefing as soon as it is written, so the human studies it while you finish the documents. Then continue here.
+4. **Final documents** (at most 10 minutes):
+   - Discrepancies: fix each one the briefing listed, in the docs or as a recorded limitation.
    - Requirements: every requirement has its final status and evidence.
    - Decisions: every significant decision is recorded, including scope cuts and conflict resolutions. Check the log in progress.md against the recorded decisions.
    - `docs/progress.md`: close the current state and add this final section:
@@ -29,11 +31,10 @@ One pass from "building" to "ready to submit". Budget about 30 minutes; started 
      - 남은 한계와 개선 방향 (우선순위순, 각각 다음 단계)
      ```
 
-   - Task-required documents (for example `PLAN.md` or `COLLABORATION.md`): write them now as concise views of the docs above and `docs/stakeholder.md`, with links. Do not copy whole sections, and never overwrite the task README.
+   - Task-required documents (for example `PLAN.md` or `COLLABORATION.md`): finish them as concise views of the docs above and `docs/stakeholder.md`, with links. Create any that kickoff missed. Do not copy whole sections, and never overwrite the task README.
    - Leave no placeholders. Ask the human at most 3 short questions about facts only they know, and write "기록 없음" for the rest. Label reconstructed history "재구성".
-4. **Commit** with `docs: final`, including AGENTS.md. The working tree must be clean.
-5. **Debrief.** Follow the `debrief` skill.
-6. **Submission checklist** for the human, 6 lines or fewer:
+5. **Commit** with `docs: final`, including AGENTS.md. The working tree must be clean.
+6. **Submission checklist** for the human, 6 lines or fewer, then the debrief's rehearsal offer:
    - The required files are at their exact paths.
    - Every editor tab is saved.
    - The check command passes.

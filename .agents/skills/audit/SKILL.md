@@ -10,7 +10,7 @@ Prove what works. Never infer it from code or from claims.
 ## Modes
 
 - `quick` (about 5 min): check the changed behavior plus the golden path. During building the check command is usually enough; use this mode when a slice touches risky areas.
-- `final` (at most 10 min, fixes included): check every requirement and every deliverable. `$wrapup` runs this mode.
+- `final` (at most 10 min, fixes included): check every requirement and every deliverable. `$wrapup` runs this mode. If AGENTS.md allows a subagent review here, start it first, run your own checks while it works, and confirm each of its findings yourself before counting it.
 
 ## Checks, in risk order
 
@@ -21,6 +21,7 @@ Prove what works. Never infer it from code or from claims.
    - The server binds `0.0.0.0` on the documented port.
    - `curl -s -o /dev/null -w '%{http_code}' http://localhost:PORT/` returns 200.
    - Give the human a 3-step check for the Browser preview: the port and path, what to click, and the expected result.
+   - When the human reports what they saw, log it verbatim as `[VERIFY] 사람 미리보기: "…"`. That report is the evidence for the UI check.
    - Never use GUI or browser automation, and never claim a UI check you did not observe.
 5. **Basics.** Input is validated, output is escaped, and there are no secrets. If an unauthenticated server binds `0.0.0.0`, list the missing auth as a limitation.
 

@@ -22,11 +22,10 @@ The time left and the value at stake decide the scope. Keep the workspace submit
 | A slice is 50% over its estimate | Cut it to the smallest version that passes its acceptance check. |
 | Otherwise | Continue the Musts in golden-path order. Should/Could work starts only after every Must is PASS. |
 
-4. **Stuck rule.** If one problem shows no progress for 10 minutes:
-   - Commit or stash the attempt.
-   - Return those files to the last good commit.
-   - Record the limitation.
-5. **Record the decision** as a log line in progress.md. If a Must was cut or the scope changed materially, record it as a decision (an ADR in the full layout).
+4. **Stuck rule.** If one problem shows no progress for 10 minutes, commit or stash the attempt and return those files to the last good commit. Then:
+   - Before W, the first time: try one different approach to the smallest version that passes its acceptance check.
+   - Otherwise: record the limitation.
+5. **Record the decision** as a log line in progress.md. If a Must was cut or the scope changed materially, record it as a decision (an ADR in the full layout) and update any task-required plan document.
 
 ## Must go/no-go
 
@@ -49,7 +48,14 @@ Reply in 6 lines or fewer, in this shape:
 결정: R5 진행. 예상 8분 ×1.5 = 12분 ≤ 한계까지 15분, a1b2c3 check 통과, 기존 Must 코드 미변경
 중단 기준: 12:35까지 PASS가 아니면 a1b2c3로 되돌리고 R5는 한계로 기록
 다음 행동: R5 슬라이스 시작
+확인: "진행" 또는 "중단"과 이유 한 줄을 주세요
 ```
+
+The 확인 line closes a Must go/no-go, a cut, or a Should offer; then wait for the human. Other decisions end at 다음 행동.
+
+## When the human answers
+
+Log their call in their own words, as `HH:MM [SCOPE] R5 진행 (사람: "데모의 핵심 흐름이라")`. A cut Must or a material scope change also becomes a decision with the same quote. Then act on the call.
 
 ## Boundaries
 

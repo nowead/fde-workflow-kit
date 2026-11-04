@@ -11,9 +11,9 @@ Make the task executable in about 15 minutes, then start building. Nothing specu
 
 Use this mode if `docs/progress.md` exists or the human says 복구/resume:
 
-1. Read its "현재 상태" section, the 요구사항 table and 충돌 section of `docs/requirements.md`, `git log --oneline -15`, and `git status`.
+1. Read its 현재 상태, the 요구사항 table and 충돌 section of `docs/requirements.md`, `git log --oneline -15`, and `git status`. Do not re-read the task.
 2. Reply in 3 lines: where we are, next step, time left.
-3. Continue. Do not re-read the whole task.
+3. Start that step in this turn, applying the human's corrections. Stop and ask instead if 현재 상태 waits for a human reply, or if `git status` shows uncommitted changes besides `docs/stakeholder.md` (list them; their intent is unknown).
 
 ## Steps
 
@@ -31,8 +31,8 @@ Use this mode if `docs/progress.md` exists or the human says 복구/resume:
    - 확인할 것: what the README leaves to the stakeholder and gaps that would change the build (rule boundaries and exceptions, who may perform each action even without login, states in the provided data). Up to 7 items (one-line question, why, default), most important first.
    - Create `docs/stakeholder.md` from its template; it is the human's, so never edit it afterwards.
    - Layout: compact (3 or fewer Musts, no decision records required) keeps decisions in the 결정 section of requirements.md; full adds `docs/adr/`.
-   - Then tell the human at once, so they can talk to the stakeholder while you finish: `담당자에게 확인할 것 준비됨: docs/requirements.md Q1-Qn (먼저: Q1 …)` and `대화는 docs/stakeholder.md에 붙여 넣고 $clarify`.
-5. **Stack.** Prefer what the environment has; add dependencies only for a Must, and install them now, while the human is still at the terminal to approve. Record it as decision 1 (`docs/adr/0001-<stack>.md` when full); a fixed stack needs only a log line. Web servers bind `0.0.0.0` on a fixed port.
+   - Tell the human at once, so they can talk to the stakeholder while you finish: `담당자에게 확인할 것 준비됨: docs/requirements.md Q1-Qn (먼저: Q1 …)` and `대화는 docs/stakeholder.md에 붙여 넣고 $clarify`.
+5. **Stack.** Prefer what the environment has; add dependencies only for a Must, and install them now, while the human can approve. Record it as decision 1 (`docs/adr/0001-<stack>.md` when full); a fixed stack needs only a log line. Web servers bind `0.0.0.0` on a fixed port.
 6. **Check command.** One command that runs the tests plus a golden-path smoke check and exits non-zero on failure (for example `scripts/check.sh`). Run it once now.
 7. **Git.** If `git status` fails, run `git init` and commit the provided files as the baseline. Commit locally only.
 8. **Progress.** Complete `docs/progress.md` from the template with:

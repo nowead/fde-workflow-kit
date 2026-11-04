@@ -27,13 +27,13 @@ The human talks to the stakeholder in their own words and keeps the conversation
    - Add 확인할 것 items for what the answers leave open that would change the build: the boundaries and exceptions of each rule (for example, whether an end time equal to the next start overlaps), who may perform each action, the states a rule creates, and how a rule treats the provided data.
    - Each item is one line with a single question: `Q7 <질문> | 왜: <바뀌는 것> | 기본값: <답이 없을 때>`. Keep existing IDs and number new items after the highest.
    - Keep at most 7 open items, most important first. Settle the rest yourself: write the default into the requirement row as ASSUMED.
-4. **Log** one `[STAKEHOLDER]` line in progress.md with the line range and what changed. Update its current state, then commit the docs.
+4. **Log** one `[STAKEHOLDER]` line in progress.md with the line range and what changed. Set its current state's 다음 to `사람 확인 대기 (requirements.md, "진행")`, then commit the docs.
 5. **Stop.** Do not start or continue building in this turn. The human reviews requirements.md first.
 
 ## When the human answers
 
 - **A conflict choice:** record it as a decision (an ADR in the full layout, the 결정 section in the compact one) with both quotes and the human's choice and reason in their own words, as `사람: "…"`. If they gave no reason, write 이유 미기재; never supply one. Apply it to the rows and remove the conflict line.
-- **"진행" or any go-ahead:** update the slice table and continue with the next slice that no open conflict blocks. Where a slice depends on an open 확인할 것 item, build its 기본값 and mark that requirement `ASSUMED (Q7 기본값)`.
+- **"진행" or any go-ahead:** update the slice table and continue with the next slice that no open conflict blocks. Where a slice depends on an open 확인할 것 item, build its 기본값 and mark that requirement `ASSUMED (Q7 기본값)`. If this session also ran the full `$kickoff`, end that slice's report, once committed, with `새 세션 시점: /new → $kickoff 복구 (결정 기록·커밋 끝남)`.
 
 ## After a golden-path slice works
 

@@ -23,7 +23,7 @@ Prove what works. Never infer it from code or from claims.
    - Give the human a 3-step check for the Browser preview: the port and path, what to click, and the expected result.
    - When the human reports what they saw, log it verbatim as `[VERIFY] 사람 미리보기: "…"`. That report is the evidence for the UI check.
    - Never use GUI or browser automation, and never claim a UI check you did not observe.
-5. **Basics.** Input is validated, output is escaped, and there are no secrets. If an unauthenticated server binds `0.0.0.0`, list the missing auth as a limitation.
+5. **Basics.** Input is validated, output is escaped, and there are no secrets. Personal or confidential fields from the provided data appear in no doc, log, or commit message, and in responses only where a requirement needs them. If an unauthenticated server binds `0.0.0.0`, list the missing auth as a limitation.
 
 Prefer existing tests. Add narrow tests only for uncovered high-risk behavior. Stop any server you start.
 

@@ -12,7 +12,7 @@ Working agreement for this workspace.
 - Commit locally only. No `git push`, no remotes, and no uploads or other external transfers.
 - No computer-use, browser-use, or other GUI or browser automation. The human checks the UI in the Browser preview.
 - Do not change approval, sandbox, or platform settings, and do not update Codex.
-- Keep secrets, tokens, and passwords out of code, logs, and docs.
+- Keep secrets, tokens, and passwords out of code, logs, and docs. Personal or confidential fields in provided data (names, employee IDs, contacts) stay out of docs, logs, commit messages, and reports; responses show only what a requirement needs.
 - Borrow external code only in small parts, and cite the source in `docs/progress.md`. Never replace the deliverable wholesale.
 
 ## Slice loop
@@ -23,7 +23,7 @@ Working agreement for this workspace.
 4. Commit the code and docs together, with a message that names the requirement IDs and says what changed and why.
 5. Send the slice report (see "Replies").
 
-Web servers bind `0.0.0.0` on a fixed port.
+Keep each business rule in one place, apart from input handling and storage, so a changed rule is a one-place edit. Web servers bind `0.0.0.0` on a fixed port.
 
 ## Docs: the record of the work
 

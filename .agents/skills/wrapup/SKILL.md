@@ -27,8 +27,8 @@ One pass from "building" to "ready to submit". Budget about 30 minutes; started 
      - 실행·확인 방법 (이번 세션에 실행한 명령만)
      - 골든 패스 결과
      - 핵심 결정 (ADR 또는 결정 섹션 링크)
-     - AI 활용 (맡긴 것, 검증 방법, 바로잡은 것, 사람이 정한 것)
-     - 남은 한계와 개선 방향 (우선순위순, 각각 다음 단계)
+     - AI 활용 (도구 구성과 역할, 맡긴 것, 검증 방법, 바로잡은 것, 사람이 정한 것)
+     - 남은 한계와 개선 방향 (못 만든 것, 깨지는 조건과 요구 범위 밖이라 막지 않은 근거, 우선순위순, 각각 다음 단계)
      ```
 
    - Task-required documents (for example `PLAN.md` or `COLLABORATION.md`): finish them as concise views of the docs above and `docs/stakeholder.md`, with links. Create any that kickoff missed. Do not copy whole sections, and never overwrite the task README.

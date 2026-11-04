@@ -6,7 +6,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILL_ROOT = ROOT / ".agents" / "skills"
-EXPECTED = {"kickoff", "clarify", "checkpoint", "audit", "wrapup", "debrief"}
+EXPECTED = {"kickoff", "clarify", "checkpoint", "audit", "wrapup", "debrief", "explain"}
 MAX_SKILL_WORDS = 800
 errors = []
 

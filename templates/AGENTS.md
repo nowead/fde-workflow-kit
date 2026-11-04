@@ -80,6 +80,7 @@ The work is done when all three hold:
 - `$audit`: evidence check
 - `$wrapup`: freeze, final audit, debrief, final docs
 - `$debrief`: brief the human and rehearse their answers
+- `$explain`: answer the human's questions on terms, concepts, and the code (often from a second session)
 
 ## Verified commands (only commands actually run)
 

@@ -11,11 +11,11 @@ FDE처럼 푼다는 것은 이런 흐름입니다. 고객의 문제를 먼저 �
 작업 폴더(과제 README가 있는 곳)의 터미널에서 실행합니다.
 
 ```bash
-git clone --depth 1 https://github.com/nowead/fde-workflow-kit /tmp/kit && bash /tmp/kit/install.sh .
+git clone --depth 1 https://github.com/nowead/fde-workflow-kit /tmp/kit && bash /tmp/kit/install.sh . --repo
 codex
 ```
 
-- 스킬은 `~/.agents/skills/`(Codex 사용자 범위)로 복사됩니다. 작업 폴더는 어지럽히지 않습니다.
+- 스킬은 작업 폴더의 `.agents/skills/`(Codex 저장소 범위)로 복사됩니다. 도구 구성이 제출물에 들어가므로, 작업 기록을 보는 사람이 어떤 스킬로 일했는지 확인할 수 있습니다. `$kickoff`가 킥오프 커밋에 함께 넣습니다.
 - `.` 인자를 주면 작업 폴더에 `AGENTS.md`가 **없을 때만** 템플릿을 만듭니다.
 - Codex에서 `/skills`나 `$`를 입력해 스킬 7개가 보이는지 확인합니다.
 - 설치 스크립트는 파일 복사만 합니다. 네트워크 접속, 패키지 설치, Codex 설정 변경은 하지 않습니다.
@@ -23,7 +23,7 @@ codex
 | 상황 | 방법 |
 | --- | --- |
 | 스킬이 안 보임 | Codex 재시작 → 설치 없이 "`/tmp/kit/.agents/skills/kickoff/SKILL.md`를 읽고 따라줘" |
-| 작업 폴더 안에 두고 싶음 | `bash /tmp/kit/install.sh . --repo` (`./.agents/skills`, 제출물에 포함됨) |
+| 작업 폴더에 두지 않고 연습만 함 | `bash /tmp/kit/install.sh .` (`--repo` 없이: `~/.agents/skills`, 제출물에 들어가지 않음) |
 | 구버전 Codex | `--legacy` (`$CODEX_HOME/skills`에 복사). 제공된 환경에서는 지원 여부와 허용 범위를 확인하기 전에는 쓰지 않습니다 |
 | 같은 이름의 스킬이 이미 있음 | 설치 스크립트가 건너뜁니다(`skip`). `--force`는 그 폴더를 지우고 교체하므로 시험이나 공용 환경에서는 쓰지 않습니다 |
 | 설치가 막힘 (권한 거부 등) | 보안·샌드박스·승인 설정을 바꾸지 않습니다. 설치 없이 "`/tmp/kit/.agents/skills/<스킬>/SKILL.md`를 읽고 따라줘"로 대신합니다 |

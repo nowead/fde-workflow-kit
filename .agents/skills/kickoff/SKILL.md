@@ -22,7 +22,7 @@ Use this mode if `docs/progress.md` exists or the human says 복구/resume:
    - Wrap-up point W = D minus a fifth of the remaining time, rounded up to 10 minutes (D-40 for 3 hours).
    - Wrap-up limit L = D-25 (or W, if later); no feature work crosses it. Submit by D-10.
    - Target finish = estimated Musts plus wrap-up, if before D-10.
-2. **Read** the task README and every provided file. Check sizes first; use `head` on large data.
+2. **Read** the task README and every provided file. Use `head` on large files.
 3. **Frame the problem** before listing features: whose problem it is, what hurts today, and what success looks like.
    - Then pick the golden path: the 2-3 minute end-to-end flow that must work.
    - It sets the slice order, smoke check, preview check, and final story.
@@ -40,7 +40,7 @@ Use this mode if `docs/progress.md` exists or the human says 복구/resume:
    - the slice table: 10-25 minutes per slice, golden path first, Musts before Shoulds. Slice 1 must not depend on open questions.
    - the first log line
 9. **AGENTS.md and task documents.** Fill "Verified commands" with commands you actually ran. Create each document the task requires (e.g. `PLAN.md`) now, as a short view from `templates.md`.
-10. **Commit** with `chore: kickoff` (docs, task documents, check command, AGENTS.md), then send the report.
+10. **Commit** with `chore: kickoff` (docs, task documents, check command, AGENTS.md, `.agents/`), then send the report.
 
 ## Report
 

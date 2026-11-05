@@ -74,6 +74,8 @@ The work is done when all three hold:
 
 ## Skills
 
+The human installed these in `.agents/skills/` as part of the submitted tool setup. Commit them; never edit or delete them.
+
 - `$kickoff`: start or resume
 - `$clarify`: turn the stakeholder conversation into requirements
 - `$checkpoint`: time and scope
